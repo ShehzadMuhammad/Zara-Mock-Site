@@ -1,0 +1,27 @@
+{
+  "name": "zara-mock-site",
+  "version": "1.0.0",
+  "description": "A mock site that has calls zara items from a built-in api and you make a purchase ",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js --exec babel-node -e js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client \""
+  },
+  "author": "Shehzad Muhammad",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.14",
+    "nodemon": "^1.18.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
