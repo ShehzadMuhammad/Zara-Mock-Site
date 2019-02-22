@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 
-const uri = "mongodb+srv://dbUser:sq8xht8VoVp4eZOH@cluster0-2ezsd.mongodb.net/zara?retryWrites=true";
+// const uri = this is where my mongo client link would go, ofc i cant put it here because of my password
 
 //Connect to Monog
 mongoose.connect(uri, {
