@@ -6,23 +6,35 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
+
+
+import { connect } from 'react-redux';
+import { addItem } from '../actions/shoppingCartActions';
 
 class ViewItemDialog extends React.Component {
-  constructor(props){
-    super(props);
 
-  }
   state = {
     open: false,
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
+  toggle = () => {
+    this.setState({ open: !this.state.open });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
+
+  onSubmit = () => {
+    const newItem = {
+      id: this.props.id,
+      itemName: this.props.itemName,
+      price: this.props.price,
+      image: this.props.image,
+      quantity: 1,
+      totalPrice: this.props.price
+    }
+
+    this.props.addItem(newItem);
+
+    this.toggle();
   };
 
   render() {
@@ -30,13 +42,13 @@ class ViewItemDialog extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" color="dark" paddingBottom="20px" onClick={this.handleClickOpen}>
+        <Button variant="outlined" color="primary" paddingbottom="20px" onClick={this.toggle}>
           View Item
         </Button>
         <Dialog
           fullScreen={fullScreen}
           open={this.state.open}
-          onClose={this.handleClose}
+          onClose={this.toggle}
           aria-labelledby="responsive-dialog-title"
         >
           <DialogTitle id="responsive-dialog-title">{this.props.itemName}</DialogTitle>
@@ -44,14 +56,14 @@ class ViewItemDialog extends React.Component {
             <DialogContentText>
               <h3>${this.props.price}</h3>
               <p>{this.props.description}</p>
-              <img className="sectionImage" src={this.props.image} />
+              <img className="sectionImage" src={this.props.image} alt="" />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.toggle} color="primary">
               Exit
             </Button>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
+            <Button onClick={this.onSubmit} color="primary" autoFocus>
               Add To Cart
             </Button>
           </DialogActions>
@@ -61,8 +73,14 @@ class ViewItemDialog extends React.Component {
   }
 }
 
+
 ViewItemDialog.propTypes = {
-  fullScreen: PropTypes.bool.isRequired,
+  addItem: PropTypes.func.isRequired,
+  cartItem: PropTypes.object.isRequired
 };
 
-export default withMobileDialog()(ViewItemDialog);
+const mapStateToProps = state => ({
+  cartItem: state.cartItem
+});
+
+export default connect(mapStateToProps, { addItem })(ViewItemDialog);

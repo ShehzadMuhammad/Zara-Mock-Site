@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import ViewItemDialog from './ViewItemDialog';
 
 import { connect } from 'react-redux';
-import { getMensItems } from '../actions/mensItemsActions';
+import { getWomensItems } from '../actions/womensItemsActions';
 
 import './Section.css';
 
@@ -24,19 +24,19 @@ const styles = theme => ({
 
 
 
-class MensItemsSection extends Component {
+class WomensItemsSection extends Component {
 
 	componentDidMount(){
-		this.props.getMensItems();
+		this.props.getWomensItems();
 	}
 
 	render(){
-		const { mensItems } = this.props.mensItem;
+		const { womensItems } = this.props.womensItem;
 		return(
 			<div className={styles.root}>
 
 				<Grid container spacing={24}>
-			 		{ mensItems && mensItems.map(({_id, itemName, image, description, price}) => (
+			 		{ womensItems && womensItems.map(({_id, itemName, image, description, price}) => (
 
 			 		<Grid item xs={12} sm={6}>
 			 			<Paper className={styles.paper}>
@@ -53,16 +53,16 @@ class MensItemsSection extends Component {
 	}
 }
 
-MensItemsSection.propTypes = {
-	getMensItems: PropTypes.func.isRequired,
-	mensItem: PropTypes.object.isRequired
+WomensItemsSection.propTypes = {
+	getWomensItems: PropTypes.func.isRequired,
+	womensItem: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-	mensItem: state.mensItem
+	womensItem: state.womensItem
 });
 
 export default withStyles(styles)(connect(
 	mapStateToProps, 
-	{ getMensItems }
-)(MensItemsSection));
+	{ getWomensItems }
+)(WomensItemsSection));
