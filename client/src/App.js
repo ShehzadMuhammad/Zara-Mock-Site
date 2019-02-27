@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import AppNavBar from './components/AppNavBar';
+import HomeSection from './components/HomeSection';
 import MensItemsSection from './components/MensItemsSection';
 import ShoppingCartSection from './components/ShoppingCartSection';
 import WomensItemsSection from './components/WomensItemsSection';
@@ -20,6 +21,7 @@ class App extends Component {
     <Provider store={store}>
       <div className="App">
         <AppNavBar />
+        <Route exact path="/" component={HomeSection} />
         <Route path="/Mens" component={MensItemsSection} />
         <Route path="/Womens" component={WomensItemsSection} />
         <Route path="/Shoes" component={ShoesItemsSection} />
