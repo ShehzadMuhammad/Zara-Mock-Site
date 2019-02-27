@@ -4,3 +4,4 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const ITEMS_LOADING = 'ITEMS_LOADING';
 export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const SUBT_QUANTITY = 'SUBT_QUANTITY';
+export const RESET_ITEMS = "RESET_ITEMS";

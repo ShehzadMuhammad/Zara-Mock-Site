@@ -1,4 +1,4 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ADD_QUANTITY, SUBT_QUANTITY } from './types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ADD_QUANTITY, SUBT_QUANTITY, RESET_ITEMS } from './types';
 
 export const getItems = () => {
 	return {
@@ -33,4 +33,12 @@ export const subtractQuantity = (id) => {
 		payload: id
 	};
 };
+
+export const resetItems = () => {
+	return{
+		type: RESET_ITEMS
+	};
+};
+
+
 
