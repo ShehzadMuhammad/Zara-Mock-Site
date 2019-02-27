@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
+import SubmitDialog from './SubmitDialog';
+
 import { connect } from 'react-redux';
 import { getItems, deleteItem, addQuantity, subtractQuantity } from '../actions/shoppingCartActions';
 
-import './ShoppingCart.css';
+import './Section.css';
 
 class ShoppingCartSection extends React.Component {
     constructor(props) {
@@ -49,33 +51,33 @@ class ShoppingCartSection extends React.Component {
             <ul>
             {cartItems.map(({id, itemName, price, image, quantity, totalPrice}) => (
 
-                <li>
+                <li key={id+1}>
                     <ul>
-                        <li className="shoppingList">
+                        <li key={itemName+1} className="shoppingList">
                             <img className="cartImage" src={image} alt="" />
                         </li>
-                        <li className="shoppingList">
+                        <li key={itemName+1} className="shoppingList">
                             <h3>{itemName}</h3>
                         </li>
-                         <li className="shoppingList">
+                         <li key={itemName+1} className="shoppingList">
                              <h3>${price}</h3>
                         </li>
 
-                        <li className="shoppingList">
+                        <li key={itemName+1} className="shoppingList">
                              <h3>Quantity: {quantity}</h3>
                         </li>
 
-                        <li className="shoppingList buttonList">
+                        <li key={itemName+1} className="shoppingList buttonList">
                               <Button onClick={this.handleAddQuantity.bind(this, id)} color="primary">
                                     +1
                                 </Button>
                         </li>
-                        <li className="shoppingList buttonList">
+                        <li key={itemName+1} className="shoppingList buttonList">
                               <Button onClick={this.handleSubtractQuantity.bind(this, id)} color="primary">
                                     -1
                                 </Button>
                         </li>
-                        <li className="shoppingList buttonList">
+                        <li key={itemName+1} className="shoppingList buttonList">
                               <Button onClick={this.handleDelete.bind(this, id)} color="primary">
                                     Remove
                                 </Button>
@@ -92,6 +94,7 @@ class ShoppingCartSection extends React.Component {
 
             <div>
                 <h1>Total: ${myTotal}</h1>
+                <SubmitDialog totalPrice={myTotal} />
             </div>
 
             </div>

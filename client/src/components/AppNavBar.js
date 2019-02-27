@@ -37,7 +37,7 @@ class AppNavBar extends React.Component {
               ZARA
             </Typography>
            
-
+              <Button component={Link} to="/">Home</Button>
               <Button component={Link} to="/Mens">Mens</Button>
               <Button  component={Link} to="/Womens">Womens</Button>
               <Button  component={Link} to="/Shoes">Shoes</Button>
