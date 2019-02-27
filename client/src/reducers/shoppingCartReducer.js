@@ -1,4 +1,4 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING, ADD_QUANTITY, SUBT_QUANTITY} from '../actions/types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING, ADD_QUANTITY, SUBT_QUANTITY, RESET_ITEMS} from '../actions/types';
 
 const initialState = {
 	cartItems: [],
@@ -14,7 +14,7 @@ export default function(state = initialState, action){
 				getItems: action.payload,
 				loading: false
 			};
-			case DELETE_ITEM:
+		case DELETE_ITEM:
 			return {
 				...state,
 				cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload)
@@ -23,8 +23,7 @@ export default function(state = initialState, action){
 		case ADD_ITEM:
 			return {
 				...state,
-				cartItems: [action.payload, ...state.cartItems]
-				
+				cartItems: [action.payload, ...state.cartItems]			
 			};
 		case ADD_QUANTITY:
 			let addedItem = state.cartItems.find(cartItem => cartItem.id === action.payload)
@@ -49,6 +48,11 @@ export default function(state = initialState, action){
 					...state
 				};
 			}
+		case RESET_ITEMS:
+			return {
+				...state,
+				cartItems: []
+			};
 		case ITEMS_LOADING:
 			return {
 				...state,
