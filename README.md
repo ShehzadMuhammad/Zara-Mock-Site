@@ -1,5 +1,3 @@
-# Zara-Mock-Site
+# Zara-Store
 
-The Client Side was built with React and Redux with Material-Ui for styling.
-The Backend was built with NodeJs and Express connected to a Mongo Atlas Database
-
+A mock store containing Zara clothing and shoes, this is a full stack application using the MERN Stack (MongoDB, Express, React and Node)
